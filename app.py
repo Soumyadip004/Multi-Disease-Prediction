@@ -19,7 +19,7 @@ Liver_model = pickle.load(open(os.path.join(working_dir, 'models', 'liver.pkl'),
 parkinson_model = pickle.load(open(os.path.join(working_dir, 'models', 'parkinson.pkl'), 'rb'))
 
 pneumonia_model_path = os.path.join(working_dir, 'models', 'vgg19_model_01.h5')
-model = tf.keras.models.load_model('models\\vgg19_model_01.h5')
+model = tf.keras.models.load_model(os.path.join(working_dir, 'models', 'vgg19_model_01.h5'))
 kidney_model_path = os.path.join(working_dir, 'models', 'kidney.h5')
 
 if os.path.exists(pneumonia_model_path):

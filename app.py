@@ -18,14 +18,14 @@ heart_model = pickle.load(open(os.path.join(working_dir, 'models', 'heart.pkl'),
 Liver_model = pickle.load(open(os.path.join(working_dir, 'models', 'liver.pkl'), 'rb'))
 parkinson_model = pickle.load(open(os.path.join(working_dir, 'models', 'parkinson.pkl'), 'rb'))
 
-pneumonia_model_path = os.path.join(working_dir, 'models', 'vgg19_model_01.h5')
-model = tf.keras.models.load_model(os.path.join(working_dir, 'models', 'vgg19_model_01.h5'))
+# pneumonia_model_path = os.path.join(working_dir, 'models', 'vgg19_model_01.h5')
+# model = tf.keras.models.load_model(os.path.join(working_dir, 'models', 'vgg19_model_01.h5'))
 kidney_model_path = os.path.join(working_dir, 'models', 'kidney.h5')
 
-if os.path.exists(pneumonia_model_path):
-    pneumonia_model = tf.keras.models.load_model(pneumonia_model_path)
-else:
-    st.error(f"Pneumonia model not found at: {pneumonia_model_path}")
+# if os.path.exists(pneumonia_model_path):
+#     pneumonia_model = tf.keras.models.load_model(pneumonia_model_path)
+# else:
+#     st.error(f"Pneumonia model not found at: {pneumonia_model_path}")
 
 if os.path.exists(kidney_model_path):
     kidney_model = tf.keras.models.load_model(kidney_model_path)
@@ -245,34 +245,34 @@ elif selected == "Parkinson's":
 
 
 # Pneumonia Prediction (Image-based)
-elif selected == "Pneumonia":
-    st.title("Pneumonia Detection from Chest X-ray")
+# elif selected == "Pneumonia":
+#     st.title("Pneumonia Detection from Chest X-ray")
 
-    # Function to preprocess the image for the model
-    def preprocess_image(image):
-        image = image.convert("RGB")
-        image = image.resize((128, 128))
-        image = np.array(image) / 255.0
-        image = np.expand_dims(image, axis=0)
-        return image
+#     # Function to preprocess the image for the model
+#     def preprocess_image(image):
+#         image = image.convert("RGB")
+#         image = image.resize((128, 128))
+#         image = np.array(image) / 255.0
+#         image = np.expand_dims(image, axis=0)
+#         return image
 
-    # Function to make a prediction
-    def predict_pneumonia(image):
-        processed_image = preprocess_image(image)
-        prediction = pneumonia_model.predict(processed_image)
-        return prediction
+#     # Function to make a prediction
+#     def predict_pneumonia(image):
+#         processed_image = preprocess_image(image)
+#         prediction = pneumonia_model.predict(processed_image)
+#         return prediction
 
-    # Upload an image
-    uploaded_image = st.file_uploader("Choose a chest X-ray image...", type=["jpg", "png", "jpeg"])
+#     # Upload an image
+#     uploaded_image = st.file_uploader("Choose a chest X-ray image...", type=["jpg", "png", "jpeg"])
 
-    if uploaded_image is not None:
-        image = Image.open(uploaded_image)
-        st.image(image, caption="Uploaded Chest X-ray", use_column_width=True)
+#     if uploaded_image is not None:
+#         image = Image.open(uploaded_image)
+#         st.image(image, caption="Uploaded Chest X-ray", use_column_width=True)
 
-        # Add a "Predict" button
-        if st.button('Predict'):
-            prediction = predict_pneumonia(image)
-            if prediction[0][0] > 0.5:
-                st.success("Prediction: Pneumonia detected.")
-            else:
-                st.success("Prediction: No pneumonia detected.")
+#         # Add a "Predict" button
+#         if st.button('Predict'):
+#             prediction = predict_pneumonia(image)
+#             if prediction[0][0] > 0.5:
+#                 st.success("Prediction: Pneumonia detected.")
+#             else:
+#                 st.success("Prediction: No pneumonia detected.")

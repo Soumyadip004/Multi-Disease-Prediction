@@ -20,13 +20,12 @@ parkinson_model = pickle.load(open(os.path.join(working_dir, 'models', 'parkinso
 
 # pneumonia_model_path = os.path.join(working_dir, 'models', 'vgg19_model_01.h5')
 # model = tf.keras.models.load_model(os.path.join(working_dir, 'models', 'vgg19_model_01.h5'))
-kidney_model_path = os.path.join(working_dir, 'models', 'kidney.h5')
-
 # if os.path.exists(pneumonia_model_path):
 #     pneumonia_model = tf.keras.models.load_model(pneumonia_model_path)
 # else:
 #     st.error(f"Pneumonia model not found at: {pneumonia_model_path}")
 
+kidney_model_path = os.path.join(working_dir, 'models', 'kidney.h5')
 if os.path.exists(kidney_model_path):
     kidney_model = tf.keras.models.load_model(kidney_model_path)
 else:
